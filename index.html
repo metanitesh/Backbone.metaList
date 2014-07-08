@@ -1,0 +1,148 @@
+<html>
+
+<head>
+    <title>Meta List</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/modules.css">
+    <link rel="stylesheet" href="css/states.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+<body>
+        <div id="mobile">        
+        <div class="logo-container">
+            <span>metalist</span>
+        </div>
+        <div class="mobile_menu">        
+            <span class="mobile_menu-item menu-list"> list </span>
+            <span class="mobile_menu-item menu-task"> task </span>
+            <span class="mobile_menu-item menu-detail"> detail </span>
+        </div> 
+    </div>
+
+    <div class="interface">
+        <div id="sidebar">
+            <div class="logo-container">
+                <span>metalist</span>
+            </div>
+            <div id="list-view">
+                <ul class="list-container">
+                
+                </ul>
+                <div class="add-new-list-container">
+                    <input type="text" class="add-new-list" placeholder="+ Add new list">
+                </div>
+            </div>
+        </div>
+        <div id="main-content">
+            <div id="task-view">
+
+                <div class="add-task-container">
+                    <input type="text" class="add-task" placeholder="add a new task" />
+                </div>
+                <div class="task-group">
+                    <ul class="task-remaining">
+
+
+                    </ul>
+                    <h1 class="text-color-flip">completed task</h1>
+
+                    <ul class="task-complete">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="detail">
+
+            <div class="panel">
+                <div class="panel-title">
+                    <span>Task Detail</span>
+                </div>
+
+                <h1 class="panel-heading">
+                    <span>content</span>
+                </h1>
+                <div id="note-view">
+                    <div class="note-container">
+                        <textarea class="note" disabled></textarea>
+                    </div>
+                </div>
+
+
+
+                <h1 class="panel-heading">
+                    <span>comments</span>
+                </h1>
+
+                <div id="comment-view">
+                    <div class="comment-container">
+                        <ul class="comments">
+
+                        </ul>
+                        <div class="add-comment-container">
+                            <input type="text" class="add-comment" placeholder="add comment" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="actionbar">
+            <div class="save-frame"></div> 
+            
+            <!-- <a class="save">fork me on github</a> -->
+            <a class="button github" target="_blank" href="https://github.com/metanitesh/Js.metaList"><span class="icon icon-gihub"></span><span>fork me on github</span></a>
+
+            <a class="button save">save</a>
+            
+        </div>
+
+
+        <div class="clr"></div>
+    </div>
+    <div class="loader">
+        <img src="images/loader.gif" width="33" alt="">
+    </div>
+    
+
+    <script type="text/template" id="list-item">
+
+    <li class="list" data-id= <%= id%> >
+
+    <span class="icon edit-list icon-list"></span>
+    <span class="icon delete-list icon-delete right"></span>
+    <span class="title"  ><%= title %></span>
+    <span class="input-wrapper hidden"> 
+    <input maxlength="255" class="edit-list-input " type="text" value=<%= title %>> </span>
+
+    </li>
+    </script>
+    <script type="text/template" id="task-item">
+
+    <li class="task-item" data-id= <%= id %>>
+    <span class="icon icon-task-checkbox check-task"></span>
+    <span class="icon icon-task-separator"></span>
+    <span class="task-title"><%= title %></span>
+    <span class="icon icon-delete delete-task right"></span>
+
+    </li>
+
+    </script>    
+    <script type="text/template" id="comment-item">
+    <li class="comment">
+    <%=  comment %>
+    </li>    
+    </script>
+
+    <script data-main="./require_config" src="js/lib/require.js"></script>
+    <script>
+    // require(['./require_config.js'], function() {
+    //     require(['./js/app/app.js']);
+    // });
+    </script>
+</body>
+
+</html>
