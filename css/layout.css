@@ -1,0 +1,36 @@
+#mobile{
+	display: none;
+}
+
+#sidebar{
+	float: left;
+	width: 21%;
+	height: 100%;
+	background: #eee url("../images/sidebar.png");
+}
+
+#main-content{
+	float: left;
+	width: 50%;
+	height: 100%;
+	padding:0 10px;
+	overflow: scroll;
+	box-sizing: border-box; 
+	
+}	
+
+#detail{
+	float: left;
+	width:28%;
+	height: 100%;
+	padding: 18px 18px 18px 0;
+	box-sizing: border-box;	
+
+}
+
+#actionbar{
+	position: fixed;
+	bottom: 23px;
+	right: 32%;	
+}
+
