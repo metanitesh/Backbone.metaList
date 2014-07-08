@@ -110,7 +110,7 @@
 
     <script type="text/template" id="list-item">
 
-    <li class="list" data-id= <%= id%> >
+    <li class="list">
 
     <span class="icon edit-list icon-list"></span>
     <span class="icon delete-list icon-delete right"></span>
@@ -139,9 +139,9 @@
 
     <script data-main="./require_config" src="js/lib/require-2.1.14.js"></script>
     <script>
-    // require(['./require_config.js'], function() {
-    //     require(['./js/app/app.js']);
-    // });
+    require(['./require_config.js'], function() {
+        require(['./js/app/app.js']);
+    });
     </script>
 </body>
 
