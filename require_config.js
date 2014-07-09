@@ -11,6 +11,12 @@ require.config({
         ListCollectionView: 'js/app/list/list-collection-view',
         AddListView: 'js/app/list/add-list-view',
 
+        TaskModel: 'js/app/task/task-model',
+        TaskView: 'js/app/task/task-view',
+        TaskCollection: 'js/app/task/task-collection',
+        TaskCollectionView: 'js/app/task/task-collection-view',
+        AddTaskView: 'js/app/task/add-task-view',
+
         'jasmine': 'tests/lib/jasmine-1.0.0/jasmine',
         'jasmine-html': 'tests/lib/jasmine-1.0.0/jasmine-html',
         'func': 'tests/lib/funcunit'
