@@ -8,6 +8,8 @@ require.config({
         ListModel: 'js/app/list/list-model',
         ListCollection: 'js/app/list/list-collection',
         ListView: 'js/app/list/list-view',
+        ListCollectionView: 'js/app/list/list-collection-view',
+        AddListView: 'js/app/list/add-list-view',
 
         'jasmine': 'tests/lib/jasmine-1.0.0/jasmine',
         'jasmine-html': 'tests/lib/jasmine-1.0.0/jasmine-html',
