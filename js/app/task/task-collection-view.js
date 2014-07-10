@@ -41,6 +41,9 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView'], function(B
 
 			if (task.get("done")) {
 				this.$el.find('.task-complete').append(taskView.el);
+				this.$el.find('.task-complete .task-item').addClass('task-done');
+				this.$el.find('.task-complete .check-task').addClass('icon-task-checked');
+				
 			} else {
 				this.$el.find('.task-remaining').append(taskView.el);
 			}
