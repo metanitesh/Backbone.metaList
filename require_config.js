@@ -16,6 +16,11 @@ require.config({
         TaskCollection: 'js/app/task/task-collection',
         TaskCollectionView: 'js/app/task/task-collection-view',
         AddTaskView: 'js/app/task/add-task-view',
+        
+        NoteView: 'js/app/note/note-view',
+
+        CommentView: 'js/app/comment/comment-view',
+        AddCommentView: 'js/app/comment/add-comment-view',
 
         Router: 'js/app/router',
 
