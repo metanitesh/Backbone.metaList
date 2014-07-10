@@ -18,6 +18,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 
 		initialize: function(){
 			this.model.on("destroy", this.remove, this);
+			this.model.on("chnage", this.render, this);
 			this.render();
 
 		},
