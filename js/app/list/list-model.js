@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone){
+define(['TaskCollection', 'backbone'], function(TaskCollection, Backbone){
 	
 	"use strict";
 
@@ -10,6 +10,10 @@ define(['backbone'], function(Backbone){
 				return "list must have titles";
 			}
 
+		},
+
+		initialize: function(){
+			this.tasks = new TaskCollection(this.get('tasks'));
 		}
 	});
 	
