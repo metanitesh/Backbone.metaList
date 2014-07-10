@@ -17,6 +17,8 @@ require.config({
         TaskCollectionView: 'js/app/task/task-collection-view',
         AddTaskView: 'js/app/task/add-task-view',
 
+        Router: 'js/app/router',
+
         'jasmine': 'tests/lib/jasmine-1.0.0/jasmine',
         'jasmine-html': 'tests/lib/jasmine-1.0.0/jasmine-html',
         'func': 'tests/lib/funcunit'
