@@ -14,7 +14,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 			if(e.keyCode === 13){
 				var val = this.$el.val();
 				if(val){
-					this.collection.add({ title: val});
+					this.collection.add({ title: val, tasks: []});
 				}
 				this.$el.val("");
 			}
