@@ -1,4 +1,5 @@
-define(['jquery', 'Router', 'ListCollection', 'ListCollectionView', 'AddListView', 'TaskCollection', 'TaskCollectionView', 'AddTaskView'], function($, Router, ListCollection, ListCollectionView, AddListView, TaskCollection, TaskCollectionView, AddTaskView) {
+        CommentView: 'js/app/comment/comment-view',
+define(['jquery', 'Router', 'ListCollection', 'ListCollectionView', 'AddListView', 'TaskCollection', 'TaskCollectionView', 'AddTaskView', 'NoteView', 'CommentView', 'AddCommentView'], function($, Router, ListCollection, ListCollectionView, AddListView, TaskCollection, TaskCollectionView, AddTaskView, NoteView, CommentView, AddCommentView) {
 
 	'use strict';
 
@@ -81,6 +82,10 @@ define(['jquery', 'Router', 'ListCollection', 'ListCollectionView', 'AddListView
 		var taskCollectionView = new TaskCollectionView();
 
 
+		var noteView = new NoteView();
+		var commentView = new CommentView();
+		var addCommentView = new AddCommentView();
+		
 		// window.taskCollection = new TaskCollection([{
 		// 	title: "some task",
 		// 	done: false,
