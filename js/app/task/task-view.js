@@ -24,9 +24,10 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		},
 
 		activate: function(){
-			console.log("hello");
+			
+			this.$el.closest(".task-group").find("li").removeClass("task-item-selected");
 			this.$el.addClass("task-item-selected");
-		
+			$(document).trigger("activeTask", this.model);
 		},
 
 		checkTaskOff: function(){
