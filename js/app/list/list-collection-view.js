@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'jquery', 'ListModel', 'ListView'], function(Backbone, _, $, ListModel, ListView) {
+define(['backbone', 'underscore', 'jquery', 'ListModel', 'ListView', 'TaskCollection'], function(Backbone, _, $, ListModel, ListView, TaskCollection) {
 
 	'use strict';
 
@@ -9,7 +9,6 @@ define(['backbone', 'underscore', 'jquery', 'ListModel', 'ListView'], function(B
 		initialize: function() {
 			this.render();
 			this.collection.on("add", this.addOne, this);
-
 		},
 
 		render: function() {
@@ -22,7 +21,6 @@ define(['backbone', 'underscore', 'jquery', 'ListModel', 'ListView'], function(B
 			var listView = new ListView({
 					model: list
 			});
-
 			this.$el.append(listView.el);
 		}
 	});
