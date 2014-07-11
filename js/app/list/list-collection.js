@@ -1,4 +1,4 @@
-define([ 'ListModel', 'backbone', 'underscore', 'jquery'], function(ListModel, Backbone, _, $) {
+define([ 'ListModel',  'backbone', 'underscore', 'jquery'], function(ListModel, Backbone, _, $) {
 
 	'use strict';
 
