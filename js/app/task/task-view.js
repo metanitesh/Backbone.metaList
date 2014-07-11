@@ -11,26 +11,27 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		template : $("#task-item").html(),
 
 		events: {
-			"click .check-task": "checkTaskOff",
+			"click .check-task": "checkOff",
 			"click .delete-task": "destroy",
-			"click": "activate"
+			"click": "select"
 		},
 
 		initialize: function(){
+			// console.log(this.model)
 			this.model.on("destroy", this.remove, this);
-			this.model.on("chnage", this.render, this);
+			// this.model.on("change", this.render, this);
 			this.render();
 
 		},
 
-		activate: function(){
+		select: function(){
 			
 			this.$el.closest(".task-group").find("li").removeClass("task-item-selected");
 			this.$el.addClass("task-item-selected");
 			$(document).trigger("activeTask", this.model);
 		},
 
-		checkTaskOff: function(){
+		checkOff: function(){
 			this.model.set("done", true);
 		},
 
@@ -38,9 +39,6 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 			this.model.destroy();
 		},
 
-		remove: function(){
-			this.$el.remove();
-		},
 
 		render: function(){
 			var compiled = _.template(this.template);
