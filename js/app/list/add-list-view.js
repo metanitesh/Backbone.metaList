@@ -12,11 +12,12 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 
 		addListItem: function(e){
 			if(e.keyCode === 13){
-				var val = this.$el.val();
+				var val = $.trim(this.$el.val());
+				
 				if(val){
 					this.collection.add({ title: val, tasks: []});
+					this.$el.val("");
 				}
-				this.$el.val("");
 			}
 		}
 	});
