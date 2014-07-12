@@ -1,5 +1,5 @@
         CommentView: 'js/app/comment/comment-view',
-define(['jquery', 'Router', 'ListCollection', 'ListCollectionView', 'AddListView', 'TaskCollection', 'TaskCollectionView', 'AddTaskView', 'NoteView', 'CommentView', 'AddCommentView'], function($, Router, ListCollection, ListCollectionView, AddListView, TaskCollection, TaskCollectionView, AddTaskView, NoteView, CommentView, AddCommentView) {
+define(['jquery', 'underscore', 'Router', 'ListCollection', 'ListCollectionView', 'AddListView', 'TaskCollection', 'TaskCollectionView', 'AddTaskView', 'NoteView', 'CommentView', 'AddCommentView'], function($, _, Router, ListCollection, ListCollectionView, AddListView, TaskCollection, TaskCollectionView, AddTaskView, NoteView, CommentView, AddCommentView) {
 
 	'use strict';
 
@@ -65,7 +65,9 @@ define(['jquery', 'Router', 'ListCollection', 'ListCollectionView', 'AddListView
 			title: "do",
 			tasks: []
 		}]);
-	
+		
+		window.vent = _.extend(Backbone.Events);
+		
 
 		new Router();
 
