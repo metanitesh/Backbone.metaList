@@ -12,21 +12,21 @@ define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'unde
 
 		events: {
 			'click': 'select',
-			'dblclick .title': 'EditView',
+			'dblclick .title': 'EditViewState',
 			'click .delete-list': 'destroy',
 			'keypress .edit-list-input': 'update',
 		},
 
 
 		initialize: function() {
-			this.model.on("destroy", this.remove, this);
-			this.model.on("change", this.updateView, this);
-			this.model.on("invalid", this.showError, this);
+			this.listenTo(this.model, "destroy", this.remove);
+			this.listenTo(this.model, "change", this.updateView);
+			this.listenTo(this.model, "invalid", this.showError);
 			this.render();
 		},
 
 
-		resetAllListStyle: function() {
+		resetAllListState: function() {
 			this.$el.siblings(".list").removeClass("list-active");
 			this.$el.siblings(".list").find(".input-wrapper").addClass("hidden");
 			this.$el.siblings(".list").find(".title").removeClass('hidden');
@@ -35,22 +35,22 @@ define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'unde
 			this.$el.siblings(".list").find(".delete-list").removeClass('icon-delete-active');
 		},
 
-		activeListStyle: function() {
+		activeListState: function() {
 			this.$el.addClass("list-active");
 			this.$el.find(".edit-list").addClass('icon-list-active');
 			this.$el.find(".delete-list").addClass('icon-delete-active');
 		},
 
 
-		EditView: function() {
+		EditViewState: function() {
 			this.$el.find(".input-wrapper").removeClass('hidden');
 			this.$el.find(".title").addClass('hidden');
 		},
 
 		select: function(e) {
-			this.resetAllListStyle();
-			this.activeListStyle();
-			$(document).trigger("cli", this.model);
+			this.resetAllListState();
+			this.activeListState();
+			vent.trigger("listSelected", this.model);
 		},
 
 		update: function(e) {
