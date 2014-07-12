@@ -21,6 +21,9 @@ require.config({
 
         CommentView: 'js/app/comment/comment-view',
         AddCommentView: 'js/app/comment/add-comment-view',
+        
+        bootstrapdata: 'js/app/bootstrapdata',
+        app: 'js/app/app-objects-registry',
 
         Router: 'js/app/router',
 
