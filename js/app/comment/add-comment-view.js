@@ -6,23 +6,25 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		el: $(".add-comment"),
 
 		events: {
-			"keypress" : "addComment"
+			"keypress": "addComment"
 		},
 
-		initialize: function(){
-			
-			$(document).on("activeTask", function(e, task){
-				this.model = task;
-				this.$el.removeAttr("disabled");
-			}.bind(this));
+		initialize: function() {
+			vent.on('taskSelected', this.setup, this);
 		},
 
-		addComment: function(e){
-			if(e.keyCode === 13){
-				var val= $(e.target).val();
-				if(val){
+		setup: function(task) {
+			this.model = task;
+			this.$el.removeAttr("disabled");
+
+		},
+
+		addComment: function(e) {
+			if (e.keyCode === 13) {
+				var val = $(e.target).val();
+				if (val) {
 					this.model.get("comments").push(val);
-					$(document).trigger("commentadded");
+					vent.trigger("commentAdded");
 					$(e.target).val("");
 				}
 			}
