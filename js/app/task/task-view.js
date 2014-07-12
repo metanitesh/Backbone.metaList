@@ -17,9 +17,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		},
 
 		initialize: function(){
-			// console.log(this.model)
-			this.model.on("destroy", this.remove, this);
-			// this.model.on("change", this.render, this);
+			this.listenTo(this.model, "destroy", this.remove, this);
 			this.render();
 
 		},
@@ -28,7 +26,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 			
 			this.$el.closest(".task-group").find("li").removeClass("task-item-selected");
 			this.$el.addClass("task-item-selected");
-			$(document).trigger("activeTask", this.model);
+			vent.trigger("taskSelected", this.model);
 		},
 
 		checkOff: function(){
