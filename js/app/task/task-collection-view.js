@@ -6,28 +6,33 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView'], function(B
 
 		el: '.task-group',
 
-
 		initialize: function() {
+			vent.on("listSelected", this.setupTasks, this);
+		},
 
-			$(document).on("cli", function(b, model) {
-				
-				this.collection = model.tasks;
-				this.render();
+		setupTasks: function(model) {
+			this.parent = model;
+			this.collection = model.get("tasks");
+			this.render();
 
-				this.collection.on("add", this.render, this);
-				this.collection.on("change", this.render, this);
-
-			}.bind(this))
-
+			this.listenTo(this.collection, "add", this.render);
+			this.listenTo(this.collection, "change", this.render);
 		},
 
 
+		emptyViewState: function() {
+			this.$el.find('.task-complete').empty();
+			this.$el.find('.task-remaining').empty();
+		},
+
+		taskCompleteState: function() {
+			this.$el.find('.task-complete .task-item').addClass('task-done');
+			this.$el.find('.task-complete .check-task').addClass('icon-task-checked');
+		},
 
 		render: function() {
 
-
-			this.$el.find('.task-complete').empty();
-			this.$el.find('.task-remaining').empty();
+			this.emptyViewState();
 			this.collection.each(function(task) {
 				this.addOne(task);
 			}, this);
@@ -41,9 +46,8 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView'], function(B
 
 			if (task.get("done")) {
 				this.$el.find('.task-complete').append(taskView.el);
-				this.$el.find('.task-complete .task-item').addClass('task-done');
-				this.$el.find('.task-complete .check-task').addClass('icon-task-checked');
-				
+				this.taskCompleteState();
+
 			} else {
 				this.$el.find('.task-remaining').append(taskView.el);
 			}
