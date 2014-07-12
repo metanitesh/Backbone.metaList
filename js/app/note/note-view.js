@@ -10,16 +10,17 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		},
 
 		initialize: function(){
-			
-			$(document).on("activeTask", function(e, task){
-				this.model = task;
-				this.$el.removeAttr("disabled").val(this.model.get("content"));	
-			}.bind(this));
+			vent.on('taskSelected', this.setup, this);
+		},
+
+		setup: function(task){
+			this.model = task;
+			this.$el.removeAttr("disabled").val(this.model.get("content"));
 		},
 
 		addContent: function(e){
-			var val = $(e.target).val()
-			if(val){				
+			var val = $(e.target).val();
+			if(val){
 				this.model.set("content", val);
 			}
 		}
