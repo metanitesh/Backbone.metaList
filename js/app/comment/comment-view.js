@@ -9,28 +9,27 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 
 		template: $("#comment-item").html(),
 
-		initialize: function(){
-			$(document).on("commentadded", function(){
-				this.renderComments();
-			}.bind(this));
-
-			$(document).on("activeTask", function(e, task){
-				this.model = task;
-				this.renderComments(this.model);	
-			}.bind(this));
+		initialize: function() {
+			vent.on("commentAdded", this.renderComments, this);
+			vent.on("taskSelected", this.setup, this);
 		},
 
-		renderComments: function(){
+		setup: function(task) {
+			this.model = task;
+			this.renderComments(this.model);
+		},
+
+		renderComments: function() {
 			this.$el.empty();
-			// console.log(this.model.get("comments"))
-			_.each(this.model.get('comments'), function(comment){
+			_.each(this.model.get('comments'), function(comment) {
 
 				var template = _.template(this.template);
-				var html = template({comment: comment});
-				console.log(html);
+				var html = template({
+					comment: comment
+				});
 
-				this.$el.append(html)	
-			}, this);	
+				this.$el.append(html)
+			}, this);
 		}
 	});
 
