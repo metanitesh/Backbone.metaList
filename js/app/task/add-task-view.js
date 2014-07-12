@@ -11,20 +11,24 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		},
 
 		initialize: function(){
-			$(document).on("cli", function(b, model){
-				this.collection = model.tasks;
-			}.bind(this))
+			vent.on('listSelected', this.setup, this);
+		},
+
+		setup: function(model){
+			this.parent = model;
+			this.collection = model.tasks;
 		},
 
 		addTaskItem: function(e){
-			window.coll = this.collection;
+			
 			if(e.keyCode === 13){
 				var val = this.$el.val();
+				
 				if(val){
-					console.log(this.collection)
-					this.collection.add({ title: val});
+					this.collection.add({ title: val}, {validate: true});
+					this.$el.val("");
 				}
-				this.$el.val("");
+				
 			}
 		}
 	});
