@@ -42,5 +42,12 @@ define([], function() {
 		}]
 	}];
 
-	return data;
+	if(localStorage.metaListBackbone){
+		// console.log(localStorage.metaListBackbone);
+		return JSON.parse(localStorage.metaListBackbone);
+	}else{
+		return data;
+	}
+
+	
 });
