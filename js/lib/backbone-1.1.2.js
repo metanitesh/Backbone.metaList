@@ -246,6 +246,7 @@
   // Create a new model with the specified attributes. A client id (`cid`)
   // is automatically generated and assigned for you.
   var Model = Backbone.Model = function(attributes, options) {
+    
     var attrs = attributes || {};
     options || (options = {});
     this.cid = _.uniqueId('c');
@@ -270,6 +271,14 @@
     // The default name for the JSON `id` attribute is `"id"`. MongoDB and
     // CouchDB users may want to set this to `"_id"`.
     idAttribute: 'id',
+
+    genrateId: function() {
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+          v = c === "x" ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      }).toUpperCase();
+    },
 
     // Initialize is an empty function by default. Override it with your own
     // initialization logic.
