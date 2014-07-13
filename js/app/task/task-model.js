@@ -14,6 +14,12 @@ define(['backbone'], function(Backbone) {
 			if (!attrs.title.replace(/^\s+|\s+$/g, '')) {
 				return "task must have title";
 			}
+		},
+
+		initialize: function(){
+			if (!this.get("id")) {
+				this.set("id", this.genrateId());
+			}
 		}
 	});
 
