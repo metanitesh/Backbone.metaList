@@ -16,7 +16,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 
 		setup: function(model){
 			this.parent = model;
-			this.collection = model.tasks;
+			this.collection = model.get("tasks");
 		},
 
 		addTaskItem: function(e){
