@@ -1,4 +1,4 @@
-define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'underscore', 'jquery'], function(TaskCollection, TaskCollectionView, AddTaskView, Backbone, _, $) {
+define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'underscore','jquery'], function( TaskCollection, TaskCollectionView, AddTaskView, Backbone, _, $) {
 
 	'use strict';
 
@@ -50,7 +50,7 @@ define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'unde
 		select: function(e) {
 			this.resetAllListState();
 			this.activeListState();
-			vent.trigger("listSelected", this.model);
+			APP.router.navigate(this.model.get("id"), { trigger: true});
 		},
 
 		update: function(e) {

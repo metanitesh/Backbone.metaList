@@ -26,7 +26,9 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 			
 			this.$el.closest(".task-group").find("li").removeClass("task-item-selected");
 			this.$el.addClass("task-item-selected");
-			vent.trigger("taskSelected", this.model);
+			var listId  = this.model.collection.parent.get("id");
+			APP.router.navigate(listId +"/"+this.model.get("id"), { trigger: true});
+
 		},
 
 		checkOff: function(){
