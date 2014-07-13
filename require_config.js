@@ -1,5 +1,5 @@
 require.config({
-    waitSeconds: 7,
+    waitSeconds: 200,
     paths: {
         jquery: 'js/lib/jquery-1.11.1',
         underscore: 'js/lib/underscore-1.6.0',
@@ -21,7 +21,8 @@ require.config({
 
         CommentView: 'js/app/comment/comment-view',
         AddCommentView: 'js/app/comment/add-comment-view',
-        
+           
+        ActionbarView: 'js/app/actionbar/actionbar-view',
         bootstrapdata: 'js/app/bootstrapdata',
         app: 'js/app/app-objects-registry',
 
