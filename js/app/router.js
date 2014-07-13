@@ -9,16 +9,23 @@ define(['backbone'], function( Backbone) {
 		},
 
 		index: function(){
-			
+			console.log("index");			
+		},
+
+		setupTask: function(listId, taskId){
+			console.log("task");
+
+			var listModel =  APP.listCollection.get(listId);
+			var taskModel = listModel.get('tasks').get(taskId);
+			vent.trigger("listSelected", listModel);
+			vent.trigger("taskSelected", taskModel);
 		},
 
 		setupList: function(id){
-			console.log(id);
-		},
-
-		setupTask: function(id, id2){
-			console.log(id, id2);
-		}
+			console.log("list");
+			var listModel = APP.listCollection.get(id);
+			vent.trigger("listSelected", listModel);
+		},		
 
 	});
 
