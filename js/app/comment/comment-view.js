@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
+define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, util) {
 
 	'use strict';
 
@@ -10,8 +10,13 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		template: $("#comment-item").html(),
 
 		initialize: function() {
-			vent.on("commentAdded", this.renderComments, this);
-			vent.on("taskSelected", this.setup, this);
+			util.vent.on("commentAdded", this.renderComments, this);
+			util.vent.on("listSelected", this.emptyView, this);
+			util.vent.on("taskSelected", this.setup, this);
+		},
+
+		emptyView: function(){
+			this.$el.empty();
 		},
 
 		setup: function(task) {
