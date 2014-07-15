@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
+define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, util) {
 
 	'use strict';
 
@@ -10,13 +10,17 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		},
 
 		initialize: function() {
-			vent.on('taskSelected', this.setup, this);
+			util.vent.on('listSelected', this.disableView, this);
+			util.vent.on('taskSelected', this.setup, this);
+		},
+
+		disableView: function() {
+			this.$el.attr("disabled", "disabled");
 		},
 
 		setup: function(task) {
 			this.model = task;
 			this.$el.removeAttr("disabled");
-
 		},
 
 		addComment: function(e) {
@@ -24,7 +28,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 				var val = $(e.target).val();
 				if (val) {
 					this.model.get("comments").push(val);
-					vent.trigger("commentAdded");
+					util.vent.trigger("commentAdded");
 					$(e.target).val("");
 				}
 			}
