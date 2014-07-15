@@ -10,19 +10,17 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 			'click .save': 'saveLocal'
 		},
 
-		initialize: function() {
-			
-
+		animantion: function(){
+			this.$el.find('.save-frame').fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100);
 		},
-
+	
 		saveLocal: function(){
 			var listCollection = _.each(APP.listCollection.toJSON(), function(list){
 				list.tasks = list.tasks.toJSON();
-				// console.log(list.tasks)
 			});
 
 			localStorage.metaListBackbone = JSON.stringify(listCollection);
-			this.$el.find('.save-frame').fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100)			
+			this.animantion();
 			
 		}
 	});
