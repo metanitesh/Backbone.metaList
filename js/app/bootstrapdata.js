@@ -1,4 +1,5 @@
 define([], function() {
+	
 	var data = [{
 		title: "to-do",
 		tasks: [{
@@ -43,7 +44,6 @@ define([], function() {
 	}];
 
 	if(localStorage.metaListBackbone){
-		// console.log(localStorage.metaListBackbone);
 		return JSON.parse(localStorage.metaListBackbone);
 	}else{
 		return data;
