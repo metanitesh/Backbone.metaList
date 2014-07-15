@@ -8,6 +8,7 @@ define(['backbone', 'underscore', 'jquery', 'ListModel', 'ListView', 'TaskCollec
 
 		initialize: function() {
 			this.render();
+			
 			this.listenTo(this.collection, "add", this.addOne);
 		},
 
@@ -21,6 +22,8 @@ define(['backbone', 'underscore', 'jquery', 'ListModel', 'ListView', 'TaskCollec
 			var listView = new ListView({
 					model: list
 			});
+
+			list.view = listView;
 			this.$el.append(listView.el);
 		}
 	});
