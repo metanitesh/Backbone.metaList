@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
+define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, util) {
 
 	'use strict';
 
@@ -11,7 +11,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		},
 
 		initialize: function(){
-			vent.on('listSelected', this.setup, this);
+			util.vent.on('listSelected', this.setup, this);
 		},
 
 		setup: function(model){
@@ -25,7 +25,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 				var val = this.$el.val();
 				
 				if(val){
-					this.collection.add({ title: val}, {validate: true});
+					this.collection.add({ title: val }, {validate: true});
 					this.$el.val("");
 				}
 				
