@@ -25,6 +25,7 @@ require.config({
         ActionbarView: 'js/app/actionbar/actionbar-view',
         bootstrapdata: 'js/app/bootstrapdata',
         app: 'js/app/app-objects-registry',
+        util: 'js/app/util',
 
         Router: 'js/app/router',
 
