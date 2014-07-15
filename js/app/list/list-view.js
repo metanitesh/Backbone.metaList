@@ -19,6 +19,7 @@ define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'unde
 
 
 		initialize: function() {
+
 			this.listenTo(this.model, "destroy", this.remove);
 			this.listenTo(this.model, "change", this.updateView);
 			this.listenTo(this.model, "invalid", this.showError);
@@ -49,7 +50,6 @@ define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'unde
 
 		select: function(e) {
 			this.resetAllListState();
-			this.activeListState();
 			APP.router.navigate(this.model.get("id"), { trigger: true});
 		},
 
@@ -68,8 +68,11 @@ define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'unde
 			this.select();
 		},
 
-		destroy: function() {
+		destroy: function(e) {
+			e.stopPropagation();
 			this.model.destroy();
+			APP.router.navigate("", { trigger: true})
+
 		},
 
 
