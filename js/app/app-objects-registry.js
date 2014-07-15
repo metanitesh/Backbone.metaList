@@ -1,25 +1,47 @@
-define(['Router', 'ListCollection', 'ListCollectionView', 'AddListView', 'TaskCollection', 'TaskCollectionView', 'AddTaskView', 'NoteView', 'CommentView', 'AddCommentView', 'bootstrapdata', 'backbone'], function( Router, ListCollection, ListCollectionView, AddListView, TaskCollection, TaskCollectionView, AddTaskView, NoteView, CommentView, AddCommentView, bootstrapdata, Backbone) {
+define(['jquery',  'ListCollection', 'ListCollectionView', 'AddListView', 'TaskCollection', 'TaskCollectionView', 'AddTaskView', 'NoteView', 'CommentView', 'AddCommentView', 'ActionbarView', 'Router', 'bootstrapdata', 'backbone'], function($, ListCollection, ListCollectionView, AddListView, TaskCollection, TaskCollectionView, AddTaskView, NoteView, CommentView, AddCommentView, ActionbarView, Router, bootstrapdata, Backbone) {
 
 	'use strict';
 
-	var APP = {};
-	APP.vent = _.extend(Backbone.Events);
+	var APP = {
 
-	APP.listCollection = new ListCollection(bootstrapdata);
-	APP.listCollectionView = new ListCollectionView({
-		collection: APP.listCollection
-	});
-	APP.addListView = new AddListView({
-		collection: APP.listCollection
-	});
+		init: function() {
+			var listCollection = new ListCollection(bootstrapdata);
+			var listCollectionView = new ListCollectionView({
+				collection: listCollection
+			});
+			var addListView = new AddListView({
+				collection: listCollection
+			});
 
-	APP.addTaskView = new AddTaskView();
-	APP.taskCollectionView = new TaskCollectionView();
-	APP.noteView = new NoteView();
-	APP.commentView = new CommentView();
-	APP.addCommentView = new AddCommentView();
+			var router = new Router({
+				listCollection: listCollection
+			});
 
-	APP.Router = new Router();
+			var addTaskView = new AddTaskView();
+			var taskCollectionView = new TaskCollectionView();
+			var noteView = new NoteView();
+			var commentView = new CommentView();
+			var addCommentView = new AddCommentView();
+
+			var actionbarView = new ActionbarView();
+
+			
+			this.setup();
+
+			return {
+				router: router,
+				listCollection: listCollection
+			};
+		},
+
+
+
+		setup: function() {
+			$(".loader").hide();
+			Backbone.history.loadUrl(Backbone.history.fragment);
+		}
+
+	};
 
 	return APP;
 
