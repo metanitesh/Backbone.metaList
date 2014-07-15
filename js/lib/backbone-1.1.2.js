@@ -531,9 +531,9 @@
       }
       wrapError(this, options);
 
-      var xhr = this.sync('delete', this, options);
+      // var xhr = this.sync('delete', this, options);
       if (!options.wait) destroy();
-      return xhr;
+      // return xhr;
     },
 
     // Default URL for the model's representation on the server -- if you're
@@ -754,6 +754,7 @@
 
       // Unless silenced, it's time to fire all appropriate add/sort events.
       if (!options.silent) {
+        console.log(toAdd)
         for (i = 0, l = toAdd.length; i < l; i++) {
           (model = toAdd[i]).trigger('add', model, this, options);
         }
