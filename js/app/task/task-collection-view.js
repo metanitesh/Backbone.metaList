@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView'], function(Backbone, _, $, TaskModel, TaskView) {
+define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView', 'util'], function(Backbone, _, $, TaskModel, TaskView, util) {
 
 	'use strict';
 
@@ -7,7 +7,7 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView'], function(B
 		el: '.task-group',
 
 		initialize: function() {
-			vent.on("listSelected", this.setupTasks, this);
+			util.vent.on("listSelected", this.setupTasks, this);
 		},
 
 		setupTasks: function(model) {
@@ -15,7 +15,7 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView'], function(B
 			this.collection = model.get("tasks");
 			this.render();
 
-			this.listenTo(this.collection, "add", this.render);
+			this.listenTo(this.collection, "add", this.addOne);
 			this.listenTo(this.collection, "change", this.render);
 		},
 
@@ -39,10 +39,13 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView'], function(B
 		},
 
 		addOne: function(task) {
+			console.log("add")
 
 			var taskView = new TaskView({
 				model: task
 			});
+
+			task.view = taskView;
 
 			if (task.get("done")) {
 				this.$el.find('.task-complete').append(taskView.el);
