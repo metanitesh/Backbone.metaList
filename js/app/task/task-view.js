@@ -19,26 +19,28 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		initialize: function(){
 			this.listenTo(this.model, "destroy", this.remove, this);
 			this.render();
-
 		},
 
-		select: function(){
-			
+		activeTaskState: function(){
 			this.$el.closest(".task-group").find("li").removeClass("task-item-selected");
 			this.$el.addClass("task-item-selected");
+		},
+		
+
+		select: function(){
 			var listId  = this.model.collection.parent.get("id");
 			APP.router.navigate(listId +"/"+this.model.get("id"), { trigger: true});
-
 		},
 
 		checkOff: function(){
 			this.model.set("done", true);
 		},
 
-		destroy: function(){
+		destroy: function(e){
+			e.preventDefault();
+			e.stopPropagation();
 			this.model.destroy();
 		},
-
 
 		render: function(){
 			var compiled = _.template(this.template);
