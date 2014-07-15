@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
+define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, util) {
 
 	'use strict';
 
@@ -10,7 +10,8 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		},
 
 		initialize: function(){
-			vent.on('taskSelected', this.setup, this);
+			util.vent.on('listSelected', this.disableView, this);
+			util.vent.on('taskSelected', this.setup, this);
 		},
 
 		setup: function(task){
@@ -18,10 +19,16 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 			this.$el.removeAttr("disabled").val(this.model.get("content"));
 		},
 
+		disableView: function(){
+			this.$el.val("");
+			this.$el.attr("disabled", "disabled");
+		},
+
 		addContent: function(e){
 			var val = $(e.target).val();
 			if(val){
 				this.model.set("content", val);
+				this.model.view.activeTaskState();
 			}
 		}
 	});
