@@ -4,10 +4,12 @@ define(['backbone'], function(Backbone) {
 
 	var TaskModel = Backbone.Model.extend({
 
-		defaults: {
-			content: '',
-			comments: [],
-			done: false
+		defaults: function() {
+			return {
+				content: '',
+				comments: [],
+				done: false
+			};
 		},
 
 		validate: function(attrs) {
@@ -16,7 +18,7 @@ define(['backbone'], function(Backbone) {
 			}
 		},
 
-		initialize: function(){
+		initialize: function() {
 			if (!this.get("id")) {
 				this.set("id", this.genrateId());
 			}
