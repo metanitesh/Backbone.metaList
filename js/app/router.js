@@ -1,31 +1,51 @@
-define(['backbone'], function( Backbone) {
+define(['backbone', 'util', 'app'], function(Backbone, util, APP) {
 
 	var Router = Backbone.Router.extend({
 
 		routes: {
-			'' : 'index',
-			':id' : 'setupList',
+			'': 'index',
+			':id': 'setupList',
 			':id/:id': 'setupTask'
 		},
 
-		index: function(){
-			console.log("index");			
+		initialize: function(config) {
+			this.listCollection = config.listCollection;
 		},
 
-		setupTask: function(listId, taskId){
-			console.log("task");
+		index: function() {
+			var listModel = this.listCollection.at(0);
+			this.navigate(listModel.get("id"), {
+				trigger: true
+			});
+		},
 
-			var listModel =  APP.listCollection.get(listId);
+		setupTask: function(listId, taskId) {
+
+			var listModel = this.listCollection.get(listId);
+			if (!listModel) {
+				return;
+			}
+			util.vent.trigger("listSelected", listModel);
+
+
 			var taskModel = listModel.get('tasks').get(taskId);
-			vent.trigger("listSelected", listModel);
-			vent.trigger("taskSelected", taskModel);
+			if (!taskModel) {
+				return;
+			}
+			util.vent.trigger("taskSelected", taskModel);
+
+			listModel.view.activeListState();
+			taskModel.view.activeTaskState();
+
 		},
 
-		setupList: function(id){
-			console.log("list");
-			var listModel = APP.listCollection.get(id);
-			vent.trigger("listSelected", listModel);
-		},		
+		setupList: function(id) {
+			var listModel = this.listCollection.get(id);
+			if (!listModel) return;
+			util.vent.trigger("listSelected", listModel);
+			listModel.view.activeListState();
+
+		},
 
 	});
 
