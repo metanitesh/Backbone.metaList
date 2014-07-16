@@ -16,6 +16,7 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 
 		setup: function(task){
 			this.model = task;
+			this.model.on('destroy', this.disableView, this);
 			this.$el.removeAttr("disabled").val(this.model.get("content"));
 		},
 
