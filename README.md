@@ -6,9 +6,8 @@
 
 ####other version
 
-***without framworks***
-
-[Js.metaList](https://github.com/metanitesh/Js.metaList/)
+>without framworks
+- [Js.metaList](https://github.com/metanitesh/Js.metaList/)
 
 
 ####Backbone: 
