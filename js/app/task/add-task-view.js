@@ -12,9 +12,23 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 
 		initialize: function(){
 			util.vent.on('listSelected', this.setup, this);
+			util.vent.on("noList", this.disableView, this);
+
+		},
+
+		disableView: function(){
+			this.$el.attr("disabled", "disabled");
+			this.$el.css("opacity", 0.3);
+		},
+
+		enableView: function(){
+			this.$el.removeAttr("disabled", "disabled");
+			this.$el.css("opacity", 1);
+
 		},
 
 		setup: function(model){
+			this.enableView();
 			this.parent = model;
 			this.collection = model.get("tasks");
 		},
