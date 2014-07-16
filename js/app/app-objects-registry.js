@@ -1,4 +1,4 @@
-define(['jquery',  'ListCollection', 'ListCollectionView', 'AddListView', 'TaskCollection', 'TaskCollectionView', 'AddTaskView', 'NoteView', 'CommentView', 'AddCommentView', 'ActionbarView', 'Router', 'bootstrapdata', 'backbone'], function($, ListCollection, ListCollectionView, AddListView, TaskCollection, TaskCollectionView, AddTaskView, NoteView, CommentView, AddCommentView, ActionbarView, Router, bootstrapdata, Backbone) {
+define(['jquery', 'ListCollection', 'ListCollectionView', 'AddListView', 'TaskCollection', 'TaskCollectionView', 'AddTaskView', 'NoteView', 'CommentView', 'AddCommentView', 'ActionbarView', 'ResponsiveView', 'Router', 'bootstrapdata', 'backbone'], function($, ListCollection, ListCollectionView, AddListView, TaskCollection, TaskCollectionView, AddTaskView, NoteView, CommentView, AddCommentView, ActionbarView, ResponsiveView, Router, bootstrapdata, Backbone) {
 
 	'use strict';
 
@@ -24,20 +24,30 @@ define(['jquery',  'ListCollection', 'ListCollectionView', 'AddListView', 'TaskC
 			var addCommentView = new AddCommentView();
 
 			var actionbarView = new ActionbarView();
+			var responsiveView = new ResponsiveView();
 
-			
 			this.setup();
 
+			if (!localStorage.metaListBackbone) {
+				this.createLocalDb(listCollection);
+			}
+			
 			return {
 				router: router,
 				listCollection: listCollection
 			};
 		},
 
+		createLocalDb: function(listCollection) {
 
+			var listCollectionJson = _.each(listCollection.toJSON(), function(list) {
+				list.tasks = list.tasks.toJSON();
+			});
+			localStorage.metaListBackbone = JSON.stringify(listCollection);
+
+		},
 
 		setup: function() {
-			$(".loader").hide();
 			Backbone.history.loadUrl(Backbone.history.fragment);
 		}
 
