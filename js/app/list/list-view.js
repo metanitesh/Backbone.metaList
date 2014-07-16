@@ -49,7 +49,7 @@ define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'unde
 		},
 
 		select: function(e) {
-			this.resetAllListState();
+			this.resetAllListState();			
 			APP.router.navigate(this.model.get("id"), { trigger: true});
 		},
 
@@ -65,7 +65,7 @@ define(['TaskCollection', 'TaskCollectionView', 'AddTaskView', 'backbone', 'unde
 		updateView: function() {
 			this.$el.empty();
 			this.render();
-			this.select();
+			this.activeListState();
 		},
 
 		destroy: function(e) {
