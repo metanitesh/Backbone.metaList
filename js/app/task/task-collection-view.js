@@ -7,14 +7,20 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView', 'util'], fu
 		el: '.task-group',
 
 		initialize: function() {
+
 			util.vent.on("listSelected", this.setupTasks, this);
+			util.vent.on("noList", this.emptyViewState, this);
+			
 		},
 
 		setupTasks: function(model) {
+
+			
 			this.parent = model;
 			this.collection = model.get("tasks");
 			this.render();
-
+			
+			this.collection._events = undefined;
 			this.listenTo(this.collection, "add", this.addOne);
 			this.listenTo(this.collection, "change", this.render);
 		},
@@ -39,7 +45,6 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView', 'util'], fu
 		},
 
 		addOne: function(task) {
-			console.log("add")
 
 			var taskView = new TaskView({
 				model: task
