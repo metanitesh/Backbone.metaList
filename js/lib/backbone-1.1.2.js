@@ -754,7 +754,7 @@
 
       // Unless silenced, it's time to fire all appropriate add/sort events.
       if (!options.silent) {
-        console.log(toAdd)
+        
         for (i = 0, l = toAdd.length; i < l; i++) {
           (model = toAdd[i]).trigger('add', model, this, options);
         }
