@@ -7,7 +7,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 		el: '.add-new-list',
 
 		events: {
-			'keypress': "addListItem"
+			'keypress': 'addListItem'
 		},
 
 		addListItem: function(e){
@@ -16,7 +16,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 				
 				if(val){
 					this.collection.add({ title: val, tasks: []});
-					this.$el.val("");
+					this.$el.val('');
 				}
 			}
 		}

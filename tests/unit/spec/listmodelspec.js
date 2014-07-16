@@ -13,7 +13,7 @@ define(['ListModel'], function(ListModel) {
 			expect(typeof list).toEqual('object');
 		});
 
-		it("validate title", function() {
+		it('validate title', function() {
 
 			/*given*/
 			var list = new ListModel({
@@ -21,52 +21,52 @@ define(['ListModel'], function(ListModel) {
 			});
 
 			/*when*/
-			list.set("title", "", {
+			list.set('title', '', {
 				validate: true
 			});
-			var title = list.get("title");
+			var title = list.get('title');
 
 			/*then*/
-			expect(title).toEqual("books");
+			expect(title).toEqual('books');
 
 			/*when*/
-			list.set("title", "movies", {
+			list.set('title', 'movies', {
 				validate: true
 			});
-			title = list.get("title");
+			title = list.get('title');
 
 			/*then*/
-			expect(title).toEqual("movies");
+			expect(title).toEqual('movies');
 		});
 
-		it("should create child taskCollection", function() {
+		it('should create child taskCollection', function() {
 
 			/*given*/
 			data = {
-				title: "to-do",
+				title: 'to-do',
 				tasks: [{
-					"title": "clean house",
-					"comments": ["after lunch", "maybe tomorrow", "doesn't look that bad"],
-					"content": "it's been ages man !",
-					"done": false
+					'title': 'clean house',
+					'comments': ['after lunch', 'maybe tomorrow', 'doesn\'t look that bad'],
+					'content': 'it\'s been ages man !',
+					'done': false
 				}, {
-					"title": "get a haircut",
-					"comments": ["will do this weekend"],
-					"content": "this could be a good reason to become a monk",
-					"done": true
+					'title': 'get a haircut',
+					'comments': ['will do this weekend'],
+					'content': 'this could be a good reason to become a monk',
+					'done': true
 				}, {
-					"title": "buy grocery",
-					"comments": [],
-					"content": "1. eggs\n2. apples\n3. bread \n4. wine",
-					"done": false
+					'title': 'buy grocery',
+					'comments': [],
+					'content': '1. eggs\n2. apples\n3. bread \n4. wine',
+					'done': false
 				}]
 			};
 			
 
 			/*when*/
 			var list = new ListModel(data);
-			expect(list.get("tasks").toJSON).toBeDefined();
-			expect(list.get("tasks").parent).toEqual(list);
+			expect(list.get('tasks').toJSON).toBeDefined();
+			expect(list.get('tasks').parent).toEqual(list);
 
 		});
 

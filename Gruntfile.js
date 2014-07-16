@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 
 		jshint: {
-			all: [],
+			all: ['js/app/**/*.js'],
 			options: {
 				bitwise: false,
 				curly: true,
@@ -27,15 +27,14 @@ module.exports = function(grunt) {
 		},
 
 		jasmine: {
-			src: [],
+			src: ['ListModel', 'ListCollection', 'TaskModel', 'TaskCollection'],
 			options: {
-				specs: '',
+				specs: 'tests/unit/spec/*.js',
 				template: require('grunt-template-jasmine-requirejs'),
 				templateOptions: {
+					requireConfigFile: './require_config.js',
 					requireConfig: {
 						baseUrl: './',
-						paths: {
-						}
 					},
 
 				},

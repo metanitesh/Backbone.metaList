@@ -1,4 +1,4 @@
-define(["backbone"], function(Backbone) {
+define(['backbone'], function(Backbone) {
 	
 	var util = {
 		vent: _.extend(Backbone.Events),
@@ -23,7 +23,7 @@ define(["backbone"], function(Backbone) {
 				postLoad();
 			};
 			for (var i = 0; i < imageArr.length; i++) {
-				var src = "images/" + imageArr[i];
+				var src = 'images/' + imageArr[i];
 				images[i] = new Image();
 				images[i].src = src;
 				images[i].onload = success;

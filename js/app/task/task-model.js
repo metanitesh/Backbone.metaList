@@ -1,6 +1,6 @@
 define(['backbone'], function(Backbone) {
 
-	"use strict";
+	'use strict';
 
 	var TaskModel = Backbone.Model.extend({
 
@@ -14,13 +14,13 @@ define(['backbone'], function(Backbone) {
 
 		validate: function(attrs) {
 			if (!attrs.title.replace(/^\s+|\s+$/g, '')) {
-				return "task must have title";
+				return 'task must have title';
 			}
 		},
 
 		initialize: function() {
-			if (!this.get("id")) {
-				this.set("id", this.genrateId());
+			if (!this.get('id')) {
+				this.set('id', this.genrateId());
 			}
 		}
 	});

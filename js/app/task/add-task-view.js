@@ -7,30 +7,30 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 		el: '.add-task',
 
 		events: {
-			'keypress': "addTaskItem"
+			'keypress': 'addTaskItem'
 		},
 
 		initialize: function(){
 			util.vent.on('listSelected', this.setup, this);
-			util.vent.on("noList", this.disableView, this);
+			util.vent.on('noList', this.disableView, this);
 
 		},
 
 		disableView: function(){
-			this.$el.attr("disabled", "disabled");
-			this.$el.css("opacity", 0.3);
+			this.$el.attr('disabled', 'disabled');
+			this.$el.css('opacity', 0.3);
 		},
 
 		enableView: function(){
-			this.$el.removeAttr("disabled", "disabled");
-			this.$el.css("opacity", 1);
+			this.$el.removeAttr('disabled', 'disabled');
+			this.$el.css('opacity', 1);
 
 		},
 
 		setup: function(model){
 			this.enableView();
 			this.parent = model;
-			this.collection = model.get("tasks");
+			this.collection = model.get('tasks');
 		},
 
 		addTaskItem: function(e){
@@ -40,7 +40,7 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 				
 				if(val){
 					this.collection.add({ title: val }, {validate: true});
-					this.$el.val("");
+					this.$el.val('');
 				}
 				
 			}

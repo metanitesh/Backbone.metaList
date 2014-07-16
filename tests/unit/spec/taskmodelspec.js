@@ -11,27 +11,27 @@ define(['TaskModel'], function(TaskModel) {
 			expect(typeof task).toEqual('object');
 		});
 
-		it("should validate title", function(){
+		it('should validate title', function(){
 
 			/*given*/
 			var task = new TaskModel({ title : 'The war of art'});
 
 			/*when*/
-			task.set("title", "", {validate: true});
-			var title = task.get("title");
+			task.set('title', '', {validate: true});
+			var title = task.get('title');
 			
 			/*then*/
 			expect(title).toEqual('The war of art');
 
 			/*when*/
-			task.set("title", "turning pro", {validate: true});
-			title = task.get("title");
+			task.set('title', 'turning pro', {validate: true});
+			title = task.get('title');
 			
 			/*then*/
-			expect(title).toEqual("turning pro");
+			expect(title).toEqual('turning pro');
 		});
 
-		it("should set defaults", function(){
+		it('should set defaults', function(){
 			
 			/*when*/
 			var task = new TaskModel({ title : 'The war of art'});

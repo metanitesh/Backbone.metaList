@@ -9,7 +9,7 @@ define(['backbone', 'underscore', 'jquery', 'ListModel', 'ListView', 'TaskCollec
 		initialize: function() {
 			this.render();
 			
-			this.listenTo(this.collection, "add", this.addOne);
+			this.listenTo(this.collection, 'add', this.addOne);
 		},
 
 		render: function() {

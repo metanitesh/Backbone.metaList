@@ -4,7 +4,7 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 
 	var ActionbarView = Backbone.View.extend({
 
-		el: $("#actionbar"),
+		el: $('#actionbar'),
 
 		events: {
 			'click .save': 'saveLocal'

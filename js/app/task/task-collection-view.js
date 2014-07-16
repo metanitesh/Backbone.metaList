@@ -8,8 +8,8 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView', 'util'], fu
 
 		initialize: function() {
 
-			util.vent.on("listSelected", this.setupTasks, this);
-			util.vent.on("noList", this.emptyViewState, this);
+			util.vent.on('listSelected', this.setupTasks, this);
+			util.vent.on('noList', this.emptyViewState, this);
 			
 		},
 
@@ -17,12 +17,12 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView', 'util'], fu
 
 			
 			this.parent = model;
-			this.collection = model.get("tasks");
+			this.collection = model.get('tasks');
 			this.render();
 			
 			this.collection._events = undefined;
-			this.listenTo(this.collection, "add", this.addOne);
-			this.listenTo(this.collection, "change", this.render);
+			this.listenTo(this.collection, 'add', this.addOne);
+			this.listenTo(this.collection, 'change', this.render);
 		},
 
 
@@ -52,7 +52,7 @@ define(['backbone', 'underscore', 'jquery', 'TaskModel', 'TaskView', 'util'], fu
 
 			task.view = taskView;
 
-			if (task.get("done")) {
+			if (task.get('done')) {
 				this.$el.find('.task-complete').append(taskView.el);
 				this.taskCompleteState();
 

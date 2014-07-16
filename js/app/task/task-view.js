@@ -8,35 +8,35 @@ define(['backbone', 'underscore', 'jquery'], function(Backbone, _, $) {
 
 		className: 'task-item',
 
-		template: $("#task-item").html(),
+		template: $('#task-item').html(),
 
 		events: {
-			"click .check-task": "checkOff",
-			"click .delete-task": "destroy",
-			"click": "select"
+			'click .check-task': 'checkOff',
+			'click .delete-task': 'destroy',
+			'click': 'select'
 		},
 
 		initialize: function() {
 			this.model._events.destroy = [];
-			this.listenTo(this.model, "destroy", this.remove, this);
+			this.listenTo(this.model, 'destroy', this.remove, this);
 			this.render();
 		},
 
 		activeTaskState: function() {
-			this.$el.closest(".task-group").find("li").removeClass("task-item-selected");
-			this.$el.addClass("task-item-selected");
+			this.$el.closest('.task-group').find('li').removeClass('task-item-selected');
+			this.$el.addClass('task-item-selected');
 		},
 
 
 		select: function() {
-			var listId = this.model.collection.parent.get("id");
-			APP.router.navigate(listId + "/" + this.model.get("id"), {
+			var listId = this.model.collection.parent.get('id');
+			APP.router.navigate(listId + '/' + this.model.get('id'), {
 				trigger: true
 			});
 		},
 
 		checkOff: function() {
-			this.model.set("done", true);
+			this.model.set('done', true);
 		},
 
 		destroy: function(e) {

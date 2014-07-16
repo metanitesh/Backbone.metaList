@@ -3,16 +3,16 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 	'use strict';
 
 	var CommentView = Backbone.View.extend({
-		el: $(".comments"),
+		el: $('.comments'),
 
-		tagName: "li",
+		tagName: 'li',
 
-		template: $("#comment-item").html(),
+		template: $('#comment-item').html(),
 
 		initialize: function() {
-			util.vent.on("commentAdded", this.renderComments, this);
-			util.vent.on("listSelected", this.emptyView, this);
-			util.vent.on("taskSelected", this.setup, this);
+			util.vent.on('commentAdded', this.renderComments, this);
+			util.vent.on('listSelected', this.emptyView, this);
+			util.vent.on('taskSelected', this.setup, this);
 
 		},
 
@@ -35,7 +35,7 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 					comment: comment
 				});
 
-				this.$el.append(html)
+				this.$el.append(html);
 			}, this);
 		}
 	});

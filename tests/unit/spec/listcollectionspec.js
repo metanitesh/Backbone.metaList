@@ -18,14 +18,14 @@ define(['ListCollection'], function(ListCollection) {
 
 			/*when*/
 			listCollection.add([{
-				title: "books"
+				title: 'books'
 			}, {
-				title: "movie"
+				title: 'movie'
 			}]);
 
 			/*then*/
-			expect(listCollection.at(0).get('title')).toEqual("books");
-			expect(listCollection.at(1).get('title')).toEqual("movie");
+			expect(listCollection.at(0).get('title')).toEqual('books');
+			expect(listCollection.at(1).get('title')).toEqual('movie');
 		})	
 	});
 

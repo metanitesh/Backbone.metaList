@@ -3,10 +3,10 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 	'use strict';
 
 	var NoteView = Backbone.View.extend({
-		el: $(".note"),
+		el: $('.note'),
 
 		events: {
-			"keypress" : "addContent"
+			'keypress' : 'addContent'
 		},
 
 		initialize: function(){
@@ -17,18 +17,18 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 		setup: function(task){
 			this.model = task;
 			this.model.on('destroy', this.disableView, this);
-			this.$el.removeAttr("disabled").val(this.model.get("content"));
+			this.$el.removeAttr('disabled').val(this.model.get('content'));
 		},
 
 		disableView: function(){
-			this.$el.val("");
-			this.$el.attr("disabled", "disabled");
+			this.$el.val('');
+			this.$el.attr('disabled', 'disabled');
 		},
 
 		addContent: function(e){
 			var val = $(e.target).val();
 			if(val){
-				this.model.set("content", val);
+				this.model.set('content', val);
 				this.model.view.activeTaskState();
 			}
 		}

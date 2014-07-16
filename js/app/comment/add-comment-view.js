@@ -3,10 +3,10 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 	'use strict';
 
 	var AddCommentView = Backbone.View.extend({
-		el: $(".add-comment"),
+		el: $('.add-comment'),
 
 		events: {
-			"keypress": "addComment"
+			'keypress': 'addComment'
 		},
 
 		initialize: function() {
@@ -15,21 +15,21 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 		},
 
 		disableView: function() {
-			this.$el.attr("disabled", "disabled");
+			this.$el.attr('disabled', 'disabled');
 		},
 
 		setup: function(task) {
 			this.model = task;
-			this.$el.removeAttr("disabled");
+			this.$el.removeAttr('disabled');
 		},
 
 		addComment: function(e) {
 			if (e.keyCode === 13) {
 				var val = $(e.target).val();
 				if (val) {
-					this.model.get("comments").push(val);
-					util.vent.trigger("commentAdded");
-					$(e.target).val("");
+					this.model.get('comments').push(val);
+					util.vent.trigger('commentAdded');
+					$(e.target).val('');
 				}
 			}
 		}
