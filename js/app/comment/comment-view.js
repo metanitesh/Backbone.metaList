@@ -13,6 +13,7 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 			util.vent.on("commentAdded", this.renderComments, this);
 			util.vent.on("listSelected", this.emptyView, this);
 			util.vent.on("taskSelected", this.setup, this);
+
 		},
 
 		emptyView: function(){
@@ -21,6 +22,7 @@ define(['backbone', 'underscore', 'jquery', 'util'], function(Backbone, _, $, ut
 
 		setup: function(task) {
 			this.model = task;
+			this.model.on('destroy', this.emptyView, this);
 			this.renderComments(this.model);
 		},
 
