@@ -23,6 +23,8 @@ require.config({
         AddCommentView: 'js/app/comment/add-comment-view',
            
         ActionbarView: 'js/app/actionbar/actionbar-view',
+        ResponsiveView: 'js/app/responsive/responsive-view',
+
         bootstrapdata: 'js/app/bootstrapdata',
         app: 'js/app/app-objects-registry',
         util: 'js/app/util',
