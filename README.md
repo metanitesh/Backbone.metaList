@@ -9,6 +9,9 @@
 >without framworks
 - [Js.metaList](https://github.com/metanitesh/Js.metaList/)
 
+>with framworks
+- [Angular.metaList](https://github.com/metanitesh/Angular.metaList/)
+
 
 ####Backbone: 
 >Backbone is a lightweight MV* library to give structure to your JS application. because of such a small and well written library it is definitely recommended as a first MV* framework to dig into.
